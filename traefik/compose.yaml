@@ -7,10 +7,8 @@ services:
       - "traefik.enable=true"
       - 'traefik.http.routers.traefik.rule=Host(`vkiedrowski.de`)'
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.traefik.service=api@internal"
-      - 'traefik.http.routers.traefik.middlewares=strip'
-      - 'traefik.http.middlewares.strip.stripprefix.prefixes=/traefik'
+      - "traefik.http.routers.traefik.tls.certresolver=cfdns"
+      - "traefik.http.routers.traefik.service=noop@internal"
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
