@@ -4,8 +4,8 @@ services:
     image: lscr.io/linuxserver/readarr:develop
     container_name: readarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=568
+      - PGID=568
       - TZ=Etc/UTC
     volumes:
       - /mnt/Applications/arrs/readarr:/config
@@ -14,3 +14,7 @@ services:
     ports:
       - 8787:8787
     restart: unless-stopped
+networks:
+  default:
+    name: traefik_default
+    external: true

@@ -19,3 +19,7 @@ services:
     ports:
       - 8181:8080
     restart: unless-stopped
+networks:
+  default:
+    name: traefik_default
+    external: true

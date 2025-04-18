@@ -9,8 +9,8 @@ services:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=568
+      - PGID=568
       - TZ=Etc/UTC
     volumes:
       - /mnt/Applications/arrs/radarr:/config
@@ -22,6 +22,6 @@ services:
     restart: unless-stopped
 
 networks:
-  network1:
+  default:
     name: traefik_default
     external: true

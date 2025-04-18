@@ -4,11 +4,15 @@ services:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=568
+      - PGID=568
       - TZ=Etc/UTC
     volumes:
       - /mnt/Applications/arrs/overseer:/config
     ports:
       - 5055:5055
     restart: unless-stopped
+networks:
+  default:
+    name: traefik_default
+    external: true
