@@ -3,6 +3,10 @@ services:
     # The official v3 Traefik docker image
     image: traefik:v3.3
     # Enables the web UI and tells Traefik to listen to docker
+    labels:
+      - "traefik.http.routers.whoami-secure.service=noop@internal"
+      - "traefik.http.routers.whoami-secure.tls.certResolver=cfdns"
+      - "traefik.http.routers.whoami-secure.tls.domains[0].main=*.vkiedrowski.de"
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -12,7 +16,6 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
-      - "--entrypoints.websecure.http.tls.domains[0].main=*.vkiedrowski.de"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.delaybeforecheck=300"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[0]=1.1.1.1:53"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[1]=8.8.8.8:53"
@@ -34,3 +37,7 @@ services:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/Applications/traefik/letsencrypt:/letsencrypt
+
+networks:
+  proxy:
+    external: true
