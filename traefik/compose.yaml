@@ -9,7 +9,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
-      - "--entrypoints.web.http.redirections.entryPoint.to=https"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--entrypoints.websecure.http.tls.domains[0].main=vkiedrowski.de"
