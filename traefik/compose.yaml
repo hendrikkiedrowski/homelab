@@ -4,6 +4,7 @@ services:
     image: traefik:v3.3
     # Enables the web UI and tells Traefik to listen to docker
     labels:
+      - "traefik.enable=true"
       - 'traefik.http.routers.traefik.rule=Host(`vkiedrowski.de`)'
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
