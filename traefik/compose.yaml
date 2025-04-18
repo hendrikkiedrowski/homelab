@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   reverse-proxy:
     # The official v3 Traefik docker image
@@ -16,8 +14,6 @@ services:
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=cert@vkiedrowski.de"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-    env_file:
-      - /mnt/Applications/traefik/vars.env
     ports:
       # HTTP port
       - "80:80"
