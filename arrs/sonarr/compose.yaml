@@ -3,8 +3,8 @@ services:
   sonarr:
     labels:
       - traefik.http.routers.sonarr.rule=Host(`sonarr.vkiedrowski.de`)
-      - traefik.http.routers.whoami.entrypoints=websecure
-      - traefik.http.routers.whoami.tls.certresolver=cfdns
+      - traefik.http.routers.sonarr.entrypoints=websecure
+      - traefik.http.routers.sonarr.tls.certresolver=cfdns
       - traefik.enable=true
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
