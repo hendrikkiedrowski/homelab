@@ -3,6 +3,7 @@ services:
   sonarr:
     labels:
       - traefik.http.routers.sonarr.rule=Host(`sonarr.vkiedrowski.de`)
+      - traefik.enable=true
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
