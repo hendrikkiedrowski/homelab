@@ -9,8 +9,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /mnt/Applications/arrs/radarr:/config
-      - /mnt/MediaData/MediaCenter/Anime:/anime
-      - /mnt/MediaData/MediaCenter/Series:/series
+      - /mnt/MediaData/MediaCenter/Anime:/mnt/Anime
+      - /mnt/MediaData/MediaCenter/Series:/mnt/Series
       - /mnt/Applications/DownloaderFiles:/downloads
     ports:
       - 8989:8989
