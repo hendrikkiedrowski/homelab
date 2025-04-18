@@ -21,6 +21,6 @@ services:
     restart: unless-stopped
 
 networks:
-  network1:
+  default:
     name: traefik_default
     external: true
