@@ -17,7 +17,7 @@ services:
       - /mnt/MediaData/MediaCenter/Movies:/mnt/Movies
       - /mnt/Applications/DownloaderFiles:/mnt/Downloads
     ports:
-      - 7878:7878
+      - 7878:8989
     restart: unless-stopped
 
 networks:
