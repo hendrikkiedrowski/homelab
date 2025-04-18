@@ -4,9 +4,12 @@ services:
     image: traefik:v3.3
     # Enables the web UI and tells Traefik to listen to docker
     labels:
-      - "traefik.http.routers.whoami-secure.service=noop@internal"
-      - "traefik.http.routers.whoami-secure.tls.certResolver=cfdns"
-      - "traefik.http.routers.whoami-secure.tls.domains[0].main=*.vkiedrowski.de"
+      - 'traefik.http.routers.traefik.rule=Host(`vkiedrowski.de`)'
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - 'traefik.http.routers.traefik.middlewares=strip'
+      - 'traefik.http.middlewares.strip.stripprefix.prefixes=/traefik'
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -18,6 +21,8 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.delaybeforecheck=300"
+      - "--entrypoints.websecure.http.tls.domains[0].main=*.vkiedrowski.de"
+      - "--entrypoints.websecure.http.tls.domains[0].sans=vkiedrowski.de"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[0]=1.1.1.1:53"
       - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[1]=8.8.8.8:53"
       - "--certificatesresolvers.cfdns.acme.dnschallenge=true"
