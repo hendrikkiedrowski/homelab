@@ -14,6 +14,8 @@ services:
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.cfdns.acme.email=cert@vkiedrowski.de"
       - "--certificatesresolvers.cfdns.acme.storage=/letsencrypt/acme.json"
+    env_file:
+      - .env
     ports:
       # HTTP port
       - "9080:80"
