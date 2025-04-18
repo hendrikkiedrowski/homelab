@@ -11,6 +11,7 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.filename=/mnt/config/externalServices.yaml"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
@@ -23,7 +24,7 @@ services:
       - "--certificatesresolvers.cfdns.acme.dnschallenge.provider=cloudflare"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.cfdns.acme.email=cert@vkiedrowski.de"
-      - "--certificatesresolvers.cfdns.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.cfdns.acme.storage=/mnt/config/letsencrypt/acme.json"
     env_file:
       - .env
     ports:
@@ -36,7 +37,7 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/Applications/traefik/letsencrypt:/letsencrypt
+      - /mnt/Applications/traefik:/mnt/config
 
 networks:
   proxy:
