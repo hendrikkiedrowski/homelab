@@ -1,6 +1,11 @@
 ---
 services:
   radarr:
+    labels:
+      - traefik.http.routers.sonarr.rule=Host(`radarr.vkiedrowski.de`)
+      - traefik.http.routers.whoami.entrypoints=websecure
+      - traefik.http.routers.whoami.tls.certresolver=cfdns
+      - traefik.enable=true
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
