@@ -9,9 +9,9 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /mnt/Applications/arrs/bazarr:/config
-      - /mnt/MediaData/MediaCenter/Anime:/anime
-      - /mnt/MediaData/MediaCenter/Series:/series
-      - /mnt/MediaData/MediaCenter/Movies:/movies
+      - /mnt/MediaData/MediaCenter/Anime:/mnt/Anime
+      - /mnt/MediaData/MediaCenter/Series:/mnt/Series
+      - /mnt/MediaData/MediaCenter/Movies:/mnt/Movies
     ports:
       - 6767:6767
     restart: unless-stopped

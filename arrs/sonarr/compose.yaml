@@ -11,7 +11,7 @@ services:
       - /mnt/Applications/arrs/radarr:/config
       - /mnt/MediaData/MediaCenter/Anime:/mnt/Anime
       - /mnt/MediaData/MediaCenter/Series:/mnt/Series
-      - /mnt/Applications/DownloaderFiles:/downloads
+      - /mnt/Applications/DownloaderFiles:/mnt/Downloads
     ports:
       - 8989:8989
     restart: unless-stopped
