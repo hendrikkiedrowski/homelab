@@ -16,9 +16,9 @@ services:
       - "--certificatesresolvers.cfdns.acme.storage=/letsencrypt/acme.json"
     ports:
       # HTTP port
-      - "80:80"
+      - "9080:80"
       # HTTPS Port
-      - "443:443"
+      - "9443:443"
       # The Web UI (enabled by --api.insecure=true)
       - "8080:8080"
     volumes:
