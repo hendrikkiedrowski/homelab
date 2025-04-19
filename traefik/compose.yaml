@@ -24,16 +24,16 @@ services:
       - "--entryPoints.web.http.redirections.entryPoint.to=websecure"
       - "--entryPoints.web.http.redirections.entryPoint.scheme=https"
       - "--entryPoints.web.http.redirections.entrypoint.permanent=true"
-      - "--certificatesResolvers.cfdns.acme.dnschallenge=true"
-      - "--certificatesResolvers.cfdns.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesResolvers.cfdns.acme.dnschallenge.resolvers[0]=1.1.1.1:53"
-      - "--certificatesResolvers.cfdns.acme.dnschallenge.resolvers[1]=8.8.8.8:53"
+      - "--certificatesResolvers.cfdns.acme.dnsChallenge=true"
+      - "--certificatesResolvers.cfdns.acme.dnsChallenge.provider=cloudflare"
+      - "--certificatesResolvers.cfdns.acme.dnsChallenge.resolvers[0]=1.1.1.1:53"
+      - "--certificatesResolvers.cfdns.acme.dnsChallenge.resolvers[1]=8.8.8.8:53"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesResolvers.cfdns.acme.email=cert@vkiedrowski.de"
       - "--certificatesResolvers.cfdns.acme.storage=/mnt/config/letsencrypt/acme-dns.json"
       - "--certificatesResolvers.generic.acme.email=cert@vkiedrowski.de"
       - "--certificatesResolvers.generic.acme.storage=/mnt/config/letsencrypt/acme-http.json"
-      - "--certificatesResolvers.generic.acme.httpChallange.entryPoint=web"
+      - "--certificatesResolvers.generic.acme.httpChallenge.entryPoint=web"
     env_file:
       - .env
     ports:
