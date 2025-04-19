@@ -13,7 +13,7 @@ services:
       - PGID=568
       - TZ=Etc/UTC
     volumes:
-      - /mnt/Applications/arrs/radarr:/config
+      - /mnt/Applications/arrs/sonarr:/config
       - /mnt/MediaData/MediaCenter/Anime:/mnt/Anime
       - /mnt/MediaData/MediaCenter/Series:/mnt/Series
       - /mnt/Applications/DownloaderFiles:/mnt/Downloads
