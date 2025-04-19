@@ -10,7 +10,7 @@ services:
     volumes:
       - /mnt/Applications/arrs/readarr:/config
       - /mnt/MediaData/MediaCenter/Books:/mnt/Books
-      - /mnt/Applications/DownloaderFiles:/mnt/Downloads
+      - /mnt/Applications/DownloaderFiles:/downloads
     ports:
       - 8787:8787
     restart: unless-stopped
