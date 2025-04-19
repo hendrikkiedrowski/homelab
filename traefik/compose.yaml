@@ -14,6 +14,7 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=proxy"
       - "--providers.file.filename=/mnt/config/externalServices.yaml"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
