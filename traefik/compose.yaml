@@ -28,6 +28,7 @@ services:
       - "--certificatesResolvers.cfdns.acme.dnsChallenge.provider=cloudflare"
       - "--certificatesResolvers.cfdns.acme.dnsChallenge.resolvers[0]=1.1.1.1:53"
       - "--certificatesResolvers.cfdns.acme.dnsChallenge.resolvers[1]=8.8.8.8:53"
+      - "--certificatesResolvers.cfdns.acme.dnsChallenge.propagation.disableChecks=true"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesResolvers.cfdns.acme.email=cert@vkiedrowski.de"
       - "--certificatesResolvers.cfdns.acme.storage=/mnt/config/letsencrypt/acme-dns.json"
