@@ -15,7 +15,7 @@ services:
     volumes:
       - /mnt/Applications/arrs/radarr:/config
       - /mnt/MediaData/MediaCenter/Movies:/mnt/Movies
-      - /mnt/Applications/DownloaderFiles:/downloads
+      - /mnt/Applications/DownloaderFiles/downloads:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped

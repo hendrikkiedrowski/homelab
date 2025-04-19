@@ -16,7 +16,7 @@ services:
       - /mnt/Applications/arrs/sonarr:/config
       - /mnt/MediaData/MediaCenter/Anime:/mnt/Anime
       - /mnt/MediaData/MediaCenter/Series:/mnt/Series
-      - /mnt/Applications/DownloaderFiles:/downloads
+      - /mnt/Applications/DownloaderFiles/downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
