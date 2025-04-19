@@ -7,7 +7,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.local.vkiedrowski.de`)"
       - "traefik.http.routers.traefik.tls.domains[0].main=vkiedrowski.de"
-      - "traefik.http.routers.traefik.tls.domains[0].sans=*.vkiedrowski.de,local"
+      - "traefik.http.routers.traefik.tls.domains[0].sans=*.vkiedrowski.de"
       - "traefik.http.routers.traefik.tls.domains[0].sans=local.vkiedrowski.de"
       - "traefik.http.routers.traefik.tls.domains[0].sans=*.local.vkiedrowski.de"
       - "traefik.http.routers.traefik.entrypoints=websecure"
