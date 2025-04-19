@@ -17,7 +17,6 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=proxy"
       - "--providers.file.filename=/mnt/config/externalServices.yaml"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
@@ -47,7 +46,3 @@ services:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/Applications/traefik:/mnt/config
-
-networks:
-  proxy:
-    external: true
