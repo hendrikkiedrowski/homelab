@@ -6,6 +6,7 @@ services:
     labels:
       - "traefik.enable=true"
       - 'traefik.http.routers.traefik.rule=Host(`vkiedrowski.de`)'
+      - "traefik.http.routers.whoami-secure.tls.domains[0].main=*.vkiedrowski.de"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=cfdns"
       - "traefik.http.routers.traefik.service=noop@internal"
