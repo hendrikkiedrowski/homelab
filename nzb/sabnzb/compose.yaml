@@ -5,7 +5,7 @@ services:
     labels:
       - traefik.http.routers.sabnzb.rule=Host(`sabnzb.vkiedrowski.de`)
       - traefik.http.routers.sabnzb.entrypoints=websecure
-      - traefik.http.routers.sabnzb.tls.certresolver=cfdns
+      - traefik.http.routers.sabnzb.tls.certresolver=generic
       - traefik.enable=true
     container_name: sabnzbd
     environment:

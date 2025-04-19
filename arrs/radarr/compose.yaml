@@ -4,7 +4,7 @@ services:
     labels:
       - traefik.http.routers.radarr.rule=Host(`radarr.vkiedrowski.de`)
       - traefik.http.routers.radarr.entrypoints=websecure
-      - traefik.http.routers.radarr.tls.certresolver=cfdns
+      - traefik.http.routers.radarr.tls.certresolver=generic
       - traefik.enable=true
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
