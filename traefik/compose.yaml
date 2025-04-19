@@ -5,7 +5,6 @@ services:
     # Enables the web UI and tells Traefik to listen to docker
     labels:
       - "traefik.enable=true"
-      - 'traefik.http.routers.traefik.rule=Host(`vkiedrowski.de`)'
       - "traefik.http.routers.whoami-secure.tls.domains[0].main=*.vkiedrowski.de"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=cfdns"
@@ -20,11 +19,6 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
-      - "--certificatesresolvers.cloudflare.acme.dnschallenge.delaybeforecheck=300"
-      - "--entrypoints.websecure.http.tls.domains[0].main=*.vkiedrowski.de"
-      - "--entrypoints.websecure.http.tls.domains[0].sans=vkiedrowski.de"
-      - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[0]=1.1.1.1:53"
-      - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers[1]=8.8.8.8:53"
       - "--certificatesresolvers.cfdns.acme.dnschallenge=true"
       - "--certificatesresolvers.cfdns.acme.dnschallenge.provider=cloudflare"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
