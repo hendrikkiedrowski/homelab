@@ -5,8 +5,8 @@ services:
     # Enables the web UI and tells Traefik to listen to docker
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.vkiedrowski.de`)"
-      - "traefik.http.routers.whoami-secure.tls.domains[0].main=*.vkiedrowski.de"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.vkiedrowski.de`)"
+      - "traefik.http.routers.traefik.tls.domains[0].main=*.vkiedrowski.de"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=cfdns"
       - "traefik.http.routers.traefik.service=noop@internal"
