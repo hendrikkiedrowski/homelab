@@ -8,7 +8,7 @@ services:
       traefik.enable: "true"
     restart: unless-stopped
     networks:
-      - karakeep_default
+      - default
       - traefik_default
     volumes:
       - data:/data
