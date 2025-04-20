@@ -8,8 +8,8 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`traefik.local.vkiedrowski.de`)"
       - "traefik.http.routers.traefik.tls.domains[0].main=vkiedrowski.de"
       - "traefik.http.routers.traefik.tls.domains[0].sans=*.vkiedrowski.de"
-      - "traefik.http.routers.traefik.tls.domains[0].sans=local.vkiedrowski.de"
-      - "traefik.http.routers.traefik.tls.domains[0].sans=*.local.vkiedrowski.de"
+      - "traefik.http.routers.traefik.tls.domains[1].main=local.vkiedrowski.de"
+      - "traefik.http.routers.traefik.tls.domains[1].sans=*.local.vkiedrowski.de"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=cfdns"
       - "traefik.http.routers.traefik.service=noop@internal"
@@ -44,5 +44,6 @@ services:
       - "8080:8080"
     volumes:
       # So that Traefik can listen to the Docker events
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/Applications/traefik:/mnt/config
