@@ -57,6 +57,8 @@ volumes:
       device: /mnt/Applications/docker-apps/karakeep/data
 
 networks:
+  default:
+     name: karakeep_default
   traefik_default:
      name: traefik_default
      external: true
