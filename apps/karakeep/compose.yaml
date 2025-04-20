@@ -8,8 +8,8 @@ services:
       traefik.enable: "true"
     restart: unless-stopped
     networks:
-      - default
       - traefik_default
+      - default
     volumes:
       - data:/data
     ports:
