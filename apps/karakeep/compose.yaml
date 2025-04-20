@@ -55,3 +55,8 @@ volumes:
       type: none
       o: bind
       device: /mnt/Applications/docker-apps/karakeep/data
+
+networks:
+  traefik_default:
+     name: traefik_default
+     external: true
