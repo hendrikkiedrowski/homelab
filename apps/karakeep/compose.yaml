@@ -17,6 +17,7 @@ services:
     env_file:
       - .env
     environment:
+      DISABLE_SIGNUPS: true
       NEXTAUTH_URL: https://karakeep.vkiedrowski.de
       MEILI_ADDR: http://meilisearch:7700
       BROWSER_WEB_URL: http://chrome:9222
