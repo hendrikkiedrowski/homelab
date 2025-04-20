@@ -59,6 +59,7 @@ volumes:
 networks:
   default:
      name: karakeep_default
+     external: true
   traefik_default:
      name: traefik_default
      external: true
