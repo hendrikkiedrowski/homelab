@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   web:
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
@@ -57,7 +56,7 @@ volumes:
       device: /mnt/Applications/docker-apps/karakeep/data
 
 networks:
-  default:
+  karakeep_default:
      name: karakeep_default
      external: true
   traefik_default:
