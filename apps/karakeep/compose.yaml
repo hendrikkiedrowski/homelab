@@ -5,6 +5,7 @@ services:
       traefik.http.routers.karakeep.rule: "Host(`karakeep.vkiedrowski.de`)"
       traefik.http.routers.karakeep.entrypoints: "websecure"
       traefik.http.routers.karakeep.tls.certresolver: "generic"
+      traefik.docker.network: "traefik_default"
       traefik.enable: "true"
     restart: unless-stopped
     networks:
