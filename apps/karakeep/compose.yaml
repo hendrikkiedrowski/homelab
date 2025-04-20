@@ -8,8 +8,13 @@ services:
       traefik.http.routers.karakeep.tls.certresolver: "generic"
       traefik.enable: "true"
     restart: unless-stopped
+    networks:
+      - karakeep_default
+      - traefik_default
     volumes:
       - data:/data
+    ports:
+      - 3000:3000
     env_file:
       - .env
     environment:
