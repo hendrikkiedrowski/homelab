@@ -43,10 +43,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /mnt/Applications/apps/karakeep/meilisearch
+      device: /mnt/Applications/docker-apps/karakeep/meilisearch
   data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /mnt/Applications/apps/karakeep/data
+      device: /mnt/Applications/docker-apps/karakeep/data
