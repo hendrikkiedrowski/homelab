@@ -1,6 +1,11 @@
 ---
 services:
   overseerr:
+    latest:
+      - traefik.http.routers.radarr.rule=Host(`overseerr.vkiedrowski.de`)
+      - traefik.http.routers.radarr.entrypoints=websecure
+      - traefik.http.routers.radarr.tls.certresolver=generic
+      - traefik.enable=true
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
@@ -8,9 +13,6 @@ services:
       - PGID=568
       - TZ=Etc/UTC
     volumes:
-      - /mnt/Applications/arrs/overseer:/config
-    ports:
-      - 5055:5055
     restart: unless-stopped
 networks:
   default:
