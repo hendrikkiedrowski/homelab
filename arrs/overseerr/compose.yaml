@@ -12,7 +12,6 @@ services:
       - PUID=568
       - PGID=568
       - TZ=Etc/UTC
-    volumes:
     restart: unless-stopped
 networks:
   default:
