@@ -2,9 +2,9 @@
 services:
   overseerr:
     labels:
-      - traefik.http.routers.radarr.rule=Host(`overseerr.vkiedrowski.de`)
-      - traefik.http.routers.radarr.entrypoints=websecure
-      - traefik.http.routers.radarr.tls.certresolver=generic
+      - traefik.http.routers.overseerr.rule=Host(`overseerr.vkiedrowski.de`)
+      - traefik.http.routers.overseerr.entrypoints=websecure
+      - traefik.http.routers.overseerr.tls.certresolver=generic
       - traefik.enable=true
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
