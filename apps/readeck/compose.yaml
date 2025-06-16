@@ -1,5 +1,10 @@
 volumes:
   readeck-data:
+    driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: /mnt/Applications/docker-apps/readeck/data
 
 services:
   app:
