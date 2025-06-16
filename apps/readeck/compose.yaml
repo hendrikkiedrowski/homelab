@@ -1,10 +1,10 @@
 volumes:
   readeck-data:
     driver: local
-      driver_opts:
-        type: none
-        o: bind
-        device: /mnt/Applications/docker-apps/readeck/data
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/Applications/docker-apps/readeck/data
 
 services:
   app:
@@ -16,8 +16,8 @@ services:
       traefik.enable: "true"
     image: codeberg.org/readeck/readeck:latest
     container_name: readeck
-    ports:
-      - 8000:8000
+    networks:
+      - traefik-default
     environment:
       # Defines the application log level. Can be error, warn, info, debug.
       - READECK_LOG_LEVEL=info
@@ -37,3 +37,8 @@ services:
       interval: 30s
       timeout: 2s
       retries: 3
+    
+  networks:  
+    traefik_default:
+      name: traefik_default
+      external: true  
