@@ -64,7 +64,7 @@ services:
       - REFRESH_ENTRIES=TRUE
 
       - ENABLE_TRAEFIK_POLL=TRUE
-      - TRAEFIK_POLL_URL=http://traefik:8080/api
+      - TRAEFIK_POLL_URL=http://traefik:8080
       - TRAEFIK_FILTER_LABEL=traefik.constraint
       - TRAEFIK_FILTER=proxy-public
 
