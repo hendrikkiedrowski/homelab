@@ -14,7 +14,7 @@ services:
       - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
     volumes:
       - /mnt/Applications/docker-apps/lazylibrary:/config
-      - /mnt/MediaData/MediaCenter/Books:/mnt/Books
+      - /mnt/MediaData/MediaCenter/Books/books:/mnt/Books/
       - /mnt/MediaData/MediaCenter/Books/audiobooks:/mnt/Audiobooks
       - /mnt/Applications/DownloaderFiles/downloads:/downloads
     ports:
