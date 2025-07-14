@@ -74,5 +74,3 @@ services:
       - DOMAIN1_ZONE_ID=${ZONE_ID}
       - DOMAIN1_PROXIED=TRUE
     restart: always
-    networks:
-      - traefik_default
