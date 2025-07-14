@@ -63,8 +63,6 @@ services:
       - TARGET_DOMAIN=vkiedrowski.de
       - REFRESH_ENTRIES=TRUE
 
-      - DOCKER_SWARM_MODE=TRUE
-
       - ENABLE_TRAEFIK_POLL=TRUE
       - TRAEFIK_POLL_URL=http://traefik:8080/api
       - TRAEFIK_FILTER_LABEL=traefik.constraint
