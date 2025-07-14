@@ -60,7 +60,7 @@ services:
 
       - CF_TOKEN=${CF_DNS_API_TOKEN}
 
-      - TARGET_DOMAIN=vkiedrowski.de
+      - TARGET_DOMAIN=${TARGET_DOMAIN}
       - REFRESH_ENTRIES=TRUE
 
       - ENABLE_TRAEFIK_POLL=TRUE
