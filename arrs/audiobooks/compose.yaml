@@ -1,0 +1,54 @@
+services:
+  lazylibrarian:
+    image: lscr.io/linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian
+    labels:
+      - traefik.http.routers.jellyseerr.rule=Host(`lazylibrary.vkiedrowski.de`)
+      - traefik.http.routers.jellyseerr.entrypoints=websecure
+      - traefik.http.routers.jellyseerr.tls.certresolver=generic
+      - traefik.enable=true
+    environment:
+      - PUID=568
+      - PGID=568
+      - TZ=Etc/UTC
+      - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
+    volumes:
+      - /mnt/Applications/docker-apps/lazylibrary:/config
+      - /mnt/MediaData/MediaCenter/Books:/mnt/Books
+      - /mnt/MediaData/MediaCenter/Books/audiobooks:/mnt/Audiobooks
+      - /mnt/Applications/DownloaderFiles/downloads:/downloads
+    ports:
+      - 5299:5299
+    restart: unless-stopped
+  audiobookshelf:
+    labels:
+      - traefik.http.routers.jellyseerr.rule=Host(`bookshelf.vkiedrowski.de`)
+      - traefik.http.routers.jellyseerr.entrypoints=websecure
+      - traefik.http.routers.jellyseerr.tls.certresolver=generic
+      - traefik.enable=true
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:13378
+    volumes:
+      # These volumes are needed to keep your library persistent
+      # and allow media to be accessed by the ABS server.
+      # The path to the left of the colon is the path on your computer,
+      # and the path to the right of the colon is where the data is
+      # available to ABS in Docker.
+      # You can change these media directories or add as many as you want
+      - /mnt/MediaData/MediaCenter/Books/audiobooks:/audiobooks
+      - /mnt/MediaData/MediaCenter/Books/podcasts:/podcasts
+      # The metadata directory can be stored anywhere on your computer
+      - /mnt/MediaData/MediaCenter/Books/metadata:/metadata
+      # The config directory needs to be on the same physical machine
+      # you are running ABS on
+      - /mnt/Applications/docker-apps/audiobookshelf/config:/config
+    restart: unless-stopped
+    # You can use the following user directive to run the ABS
+    # docker container as a specific user. You will need to change
+    # the UID and GID to the correct values for your user.
+    user: 568:568
+networks:
+   default:
+     name: traefik_default
+     external: true
