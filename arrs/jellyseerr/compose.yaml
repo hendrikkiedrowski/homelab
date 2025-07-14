@@ -1,0 +1,21 @@
+---
+services:
+  jellyseerr:
+    labels:
+      - traefik.http.routers.jellyseerr.rule=Host(`jellyseer.vkiedrowski.de`)
+      - traefik.http.routers.jellyseerr.entrypoints=websecure
+      - traefik.http.routers.jellyseerr.tls.certresolver=generic
+      - traefik.enable=true
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - PUID=568
+      - PGID=568
+      - TZ=Etc/UTC
+    restart: unless-stopped
+    volumes:
+      - /mnt/Applications/arrs/jellyseer:/app/config
+networks:
+  default:
+    name: traefik_default
+    external: true

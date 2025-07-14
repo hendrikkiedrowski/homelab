@@ -26,8 +26,6 @@ services:
       - "--certificatesResolvers.cfdns.acme.dnsChallenge=true"
       - "--certificatesResolvers.cfdns.acme.dnsChallenge.provider=cloudflare"
       - "--certificatesResolvers.cfdns.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53,8.8.8.8:53"
-      #- "--certificatesResolvers.cfdns.acme.dnsChallenge.propagation.disableChecks=true"
-      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesResolvers.cfdns.acme.email=cert@vkiedrowski.de"
       - "--certificatesResolvers.cfdns.acme.storage=/mnt/config/letsencrypt/acme-dns.json"
       - "--certificatesResolvers.generic.acme.email=cert@vkiedrowski.de"
@@ -47,3 +45,34 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - /mnt/Applications/traefik:/mnt/config
+  cloudflare-companion:
+    image: ghcr.io/tiredofit/docker-traefik-cloudflare-companion:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TIMEZONE=Europe/Berlin
+
+      - LOG_TYPE=CONSOLE
+      - LOG_LEVEL=INFO
+
+      - TRAEFIK_VERSION=2
+      - RC_TYPE=CNAME
+
+      - CF_TOKEN=${CF_DNS_API_TOKEN}
+
+      - TARGET_DOMAIN=vkiedrowski.de
+      - REFRESH_ENTRIES=TRUE
+
+      - DOCKER_SWARM_MODE=TRUE
+
+      - ENABLE_TRAEFIK_POLL=TRUE
+      - TRAEFIK_POLL_URL=http://traefik:8080/api
+      - TRAEFIK_FILTER_LABEL=traefik.constraint
+      - TRAEFIK_FILTER=proxy-public
+
+      - DOMAIN1=vkiedrowski.de
+      - DOMAIN1_ZONE_ID=${ZONE_ID}
+      - DOMAIN1_PROXIED=TRUE
+    restart: always
+    networks:
+      - traefik_default
