@@ -21,6 +21,10 @@ services:
       - 5299:5299
     restart: unless-stopped
   audiobookshelf:
+    environment:
+      - PUID=568
+      - PGID=568
+      - TZ=Etc/UTC
     labels:
       - traefik.http.routers.jellyseerr.rule=Host(`bookshelf.vkiedrowski.de`)
       - traefik.http.routers.jellyseerr.entrypoints=websecure
@@ -30,23 +34,11 @@ services:
     ports:
       - 13378:13378
     volumes:
-      # These volumes are needed to keep your library persistent
-      # and allow media to be accessed by the ABS server.
-      # The path to the left of the colon is the path on your computer,
-      # and the path to the right of the colon is where the data is
-      # available to ABS in Docker.
-      # You can change these media directories or add as many as you want
       - /mnt/MediaData/MediaCenter/Books/audiobooks:/audiobooks
       - /mnt/MediaData/MediaCenter/Books/podcasts:/podcasts
-      # The metadata directory can be stored anywhere on your computer
       - /mnt/MediaData/MediaCenter/Books/metadata:/metadata
-      # The config directory needs to be on the same physical machine
-      # you are running ABS on
       - /mnt/Applications/docker-apps/audiobookshelf/config:/config
     restart: unless-stopped
-    # You can use the following user directive to run the ABS
-    # docker container as a specific user. You will need to change
-    # the UID and GID to the correct values for your user.
     user: 568:568
 networks:
    default:
