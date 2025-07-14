@@ -70,5 +70,6 @@ services:
 
       - DOMAIN1=vkiedrowski.de
       - DOMAIN1_ZONE_ID=${ZONE_ID}
+      - DOMAIN1_EXCLUDED_SUB_DOMAINS=*.local.vkiedrowski.de
       - DOMAIN1_PROXIED=TRUE
     restart: always
