@@ -3,9 +3,9 @@ services:
     image: lscr.io/linuxserver/lazylibrarian:latest
     container_name: lazylibrarian
     labels:
-      - traefik.http.routers.jellyseerr.rule=Host(`lazylibrary.vkiedrowski.de`)
-      - traefik.http.routers.jellyseerr.entrypoints=websecure
-      - traefik.http.routers.jellyseerr.tls.certresolver=generic
+      - traefik.http.routers.lazyl.rule=Host(`lazylibrary.vkiedrowski.de`)
+      - traefik.http.routers.lazyl.entrypoints=websecure
+      - traefik.http.routers.lazyl.tls.certresolver=generic
       - traefik.enable=true
     environment:
       - PUID=568
@@ -26,9 +26,9 @@ services:
       - PGID=568
       - TZ=Etc/UTC
     labels:
-      - traefik.http.routers.jellyseerr.rule=Host(`bookshelf.vkiedrowski.de`)
-      - traefik.http.routers.jellyseerr.entrypoints=websecure
-      - traefik.http.routers.jellyseerr.tls.certresolver=generic
+      - traefik.http.routers.abs.rule=Host(`bookshelf.vkiedrowski.de`)
+      - traefik.http.routers.abs.entrypoints=websecure
+      - traefik.http.routers.abs.tls.certresolver=generic
       - traefik.enable=true
     image: ghcr.io/advplyr/audiobookshelf:latest
     ports:
